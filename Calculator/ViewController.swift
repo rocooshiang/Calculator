@@ -9,17 +9,68 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet var symbol: UILabel!
+    @IBOutlet var displayArea: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
+    
+    @IBAction func numberPointBtn(sender: AnyObject) {
+        //小數點Button
+        guard sender.tag! != 10 else{
+            //如果displayArea尚未有小數點，則可以加入
+            if !(displayArea.text! as NSString).containsString("."){
+                displayArea.text = displayArea.text!+"."
+            }
+            return
+        }
+        
+        //0 Buttno
+        if sender.tag! == 0{
+            //原始數字是0的話，按0就不做任何動作
+            guard displayArea.text! != "0" else{
+                return
+            }
+            displayArea.text = displayArea.text!+"0"
+        }else{ // 1~9 Button
+            displayArea.text = displayLabel(number: "\(sender.tag!)", displayArea: displayArea)
+        }
+    }
+    
+    @IBAction func addBtn(sender: AnyObject) {
+    }
+    
+    @IBAction func subtractBtn(sender: AnyObject) {
+    }
+    
+    @IBAction func multiplyBtn(sender: AnyObject) {
+    }
+    
+    @IBAction func divideBtn(sender: AnyObject) {
+    }
+    
+    @IBAction func totalBtn(sender: AnyObject) {
+    }
+    
+    @IBAction func cleanBtn(sender: AnyObject) {
+        displayArea.text = "0"
+    }
+    
+    @IBAction func signBtn(sender: AnyObject) {
+    }
+    
+    @IBAction func remainderBtn(sender: AnyObject) {
+    }
+    
 
-
+    
 }
 
