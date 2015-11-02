@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("test pull request")
+        print("test push")
+        print("test merge")
         
     }
     
