@@ -17,6 +17,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         var test = "test2"
+        var test = "test2"
+        var test = "test2"
+
+        var test = "test2"
+
+
+        
         
     }
     
