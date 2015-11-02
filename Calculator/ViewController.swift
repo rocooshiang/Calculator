@@ -17,10 +17,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         var test = "test2"
-        var test = "test2"
-        var test = "test2"
-
-        var test = "test2"
+        var test1 = "test2"
+        var test2 = "test2"
+        var test3 = "test2"
+        var test4 = "test2"
 
 
         
