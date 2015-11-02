@@ -16,7 +16,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var test = "test"
+        var test = "test2"
+        var test1 = "test2"
+        var test2 = "test2"
+        var test3 = "test2"
+        var test4 = "test2"
+
+
+        
         
     }
     
