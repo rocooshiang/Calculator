@@ -105,6 +105,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //尚未完成
     @IBAction func percentBtn(sender: AnyObject) {
         guard displayArea.text! != "0" else{
             return
