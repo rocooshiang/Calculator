@@ -1,3 +1,5 @@
 # calculator
 
-Practice calculator features (incomplete...)
+Practice calculator features
+
+percent button incomplete
