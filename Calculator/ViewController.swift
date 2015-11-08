@@ -17,9 +17,7 @@ class ViewController: UIViewController {
     var flag = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        var test = "test"
+        super.viewDidLoad()        
         
     }
     
@@ -30,6 +28,7 @@ class ViewController: UIViewController {
     
     @IBAction func numberPointBtn(sender: AnyObject) {
         
+        //已經有按加減乘除的狀態，數字需要重新顯示
         if flag{
             displayArea.text = "0"
             flag = false
@@ -100,6 +99,7 @@ class ViewController: UIViewController {
             return
         }
         
+        //判斷是否已經包含負號("-")
         if (displayArea.text! as NSString).containsString("-"){
             displayArea.text = displayArea.text!.stringByReplacingOccurrencesOfString("-", withString: "")
         }else{
