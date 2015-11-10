@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //尚未完成
+
     @IBAction func percentBtn(sender: AnyObject) {
         guard displayArea.text! != "0" else{
             return
@@ -145,7 +145,7 @@ class ViewController: UIViewController {
                 
             }else{
                 
-                //e.g. 123.4 -> 1.23.4                
+                //e.g. 123.4 -> 1.23.4
                 displayArea.text!.insert(".", atIndex: index!.advancedBy(-3))
                 
             }
