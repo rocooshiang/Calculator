@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var flag = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         
     }
     
@@ -112,24 +112,61 @@ class ViewController: UIViewController {
         guard displayArea.text! != "0" else{
             return
         }
-        let strLength = displayArea.text?.characters.count
         
-        if strLength < 3{
-            if strLength == 1{
-                displayArea.text = "0.0" + displayArea.text!
+        let strLength = displayArea.text?.characters.count
+        //起始數字沒有"."
+        if !displayArea.text!.characters.contains("."){
+            if strLength < 3{
+                if strLength == 1{
+                    displayArea.text = "0.0" + displayArea.text!
+                }else{
+                    displayArea.text = "0." + displayArea.text!
+                }
             }else{
-                displayArea.text = "0." + displayArea.text!
+                displayArea.text?.insert(".", atIndex: (displayArea.text?.endIndex.advancedBy(-2))!)
             }
         }else{
-            displayArea.text?.insert(".", atIndex: (displayArea.text?.endIndex.advancedBy(-2))!)
+            //取得最後一個"."的位置
+            let index = displayArea.text!.rangeOfString(".", options: .BackwardsSearch, range: nil, locale: nil)?.endIndex
+            
+            //加上正確"."該出現的地方
+            
+            if "\(index!)" == "2"{
+                
+                //如果"."在index 2的位置，則前面需補2個"0"
+                //e.g. 1.2 -> 0.01.2
+                displayArea.text = "0.0" + displayArea.text!
+                
+            }else if "\(index!)" == "3"{
+                
+                //如果"."在index 3的位置，則前面需補1個"0"
+                //e.g. 12.3 -> 0.12.3
+                displayArea.text = "0." + displayArea.text!
+                
+            }else{
+                
+                //e.g. 123.4 -> 1.23.4                
+                displayArea.text!.insert(".", atIndex: index!.advancedBy(-3))
+                
+            }
+            
+            //拿掉最後一個"."
+            let index1 = displayArea.text!.rangeOfString(".", options: .BackwardsSearch, range: nil, locale: nil)?.endIndex
+            displayArea.text?.removeAtIndex(index1!.advancedBy(-1))
         }
         
-        //判斷最後是否為零，是則拿掉
-        
-       let index = displayArea.text?.endIndex.advancedBy(-1)
+        //判斷最後是否為"0"，是則拿掉
+        let index = displayArea.text?.endIndex.advancedBy(-1)
         if displayArea.text![index!] == "0"{
             let range = displayArea.text!.endIndex.advancedBy(-1)..<displayArea.text!.endIndex
             displayArea.text?.removeRange(range)
+            
+            //再判斷最後是否為"0"，如果還是則拿掉"0"之外，也拿掉前面的"."
+            let index1 = displayArea.text?.endIndex.advancedBy(-1)
+            if displayArea.text![index1!] == "0"{
+                let range = displayArea.text!.endIndex.advancedBy(-2)..<displayArea.text!.endIndex
+                displayArea.text?.removeRange(range)
+            }
         }
     }
     
